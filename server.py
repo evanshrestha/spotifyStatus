@@ -121,3 +121,5 @@ if __name__ == '__main__':
     if 'SPOTIFY_STATUS_CERT' in os.environ and 'SPOTIFY_STATUS_KEY' in os.environ:
         context = (os.getenv('SPOTIFY_STATUS_CERT'), os.getenv('SPOTIFY_STATUS_KEY'))
         app.run(host=host, port=port, ssl_context = context)
+    else:
+        app.run(host=host, port=port)
