@@ -1,8 +1,12 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
+from flask_cors import CORS
 import time
 import threading
 from spotify_status import SpotifyStatus
+import os
+
 app = Flask(__name__)
+CORS(app)
 
 current_playing = None
 
@@ -110,4 +114,10 @@ if __name__ == '__main__':
     ss = SpotifyStatus()
     update_thread = threading.Thread(target=update_current_playing)
     update_thread.start()
-    app.run(host='0.0.0.0', port=5002)
+
+    host = '0.0.0.0'
+    port = 5002
+    
+    if 'SPOTIFY_STATUS_CERT' in os.environ and 'SPOTIFY_STATUS_KEY' in os.environ:
+        context = (os.getenv('SPOTIFY_STATUS_CERT'), os.getenv('SPOTIFY_STATUS_KEY'))
+        app.run(host=host, port=port, ssl_context = context)

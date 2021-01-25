@@ -29,21 +29,15 @@ class SpotifyStatus:
         else:
             song = results['item']
             return song
-            # title = song['name']
-            # artists = [a['name'] for a in song['artists']]
-            # return f'Now playing {title} by {combine_list_str(artists)}'
     
     def get_recently_played(self):
         results = self.sp.current_user_recently_played()
         song_list = []
-        #return_str = ''
         if results is None:
             return_str = 'No recent tracks'
         else:
             for item in results['items']:
                 song_list.append(item)
-                #return_str += (item['track']['name'] + ' by ' + combine_list_str([a['name'] for a in item['track']['artists']])) + '\n'
-        #return return_str
         return song_list
 
 def main():

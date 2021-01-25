@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Spotify Status</title>
+</head>
+<body>
+    {% if curr_song %}
+    Evan's listening to <a href={{ curr_song.link }}>{{curr_song.name}}</a> by 
+        {% for a in curr_song.artists %}
+            <a href={{ a.link }}>{{ a.name }}</a>
+            {%- if curr_song.artists|length > 1 -%}
+                {%- if ( loop.index < curr_song.artists|length ) and ( curr_song.artists|length > 2 )-%}
+                ,
+                {%- endif -%}
+            
+                {% if loop.index == curr_song.artists|length - 1 %}
+                and
+                {%- endif -%}
+            {%- endif -%}
+        {%- endfor -%}
+        .
+    {% else %}
+    Doesn't look like Evan is playing anything. Maybe later!
+    {% endif %} 
+</body>
+</html>
