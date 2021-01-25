@@ -62,7 +62,7 @@ class Status extends React.Component {
             artistNames.push(' and ');
           }
         }
-        const ListeningStrings = ["Join in!", "Typical.", "Maybe you can fix his music taste.", "Wanna listen?"];
+        const ListeningStrings = ["Join in!", "Typical.", "Maybe you should fix him.", "Wanna listen?"];
         const notListeningString = ListeningStrings[Math.floor(Math.random()*ListeningStrings.length)];
 
         return (
