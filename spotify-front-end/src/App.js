@@ -57,7 +57,7 @@ class Status extends React.Component {
         var artistNames = [];
 
         for (var i = 0; i < current.artists.length; i++) {
-          artistNames.push(<a href={current.artists[i].link}>{current.artists[i].name}</a>);
+          artistNames.push(<a href={current.artists[i].link} target="_parent">{current.artists[i].name}</a>);
           if ((i < current.artists.length - 1) && (current.artists.length > 2)) {
             artistNames.push(', ');
           }
@@ -76,7 +76,7 @@ class Status extends React.Component {
               </div>
               <div class='col-sm-7'>
                 <div class='card-body'>
-                  <h5 class='card-title'>Evan's listening to <a href={ songLink }>{ songName }</a> by { artistNames }.</h5>
+                  <h5 class='card-title'>Evan's listening to <a href={ songLink } target="_parent">{ songName }</a> by { artistNames }.</h5>
                   <p class='card-text'>{ listeningString }</p>
                 </div>
               </div>
