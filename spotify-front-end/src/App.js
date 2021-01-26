@@ -49,7 +49,7 @@ class Status extends React.Component {
       return <div>{loadingString}</div>;
     } else {
 
-      if (!current) {
+      if (current) {
 
         const songLink = current.link;
         const songName = current.name;
