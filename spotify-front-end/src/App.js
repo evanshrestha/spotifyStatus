@@ -49,7 +49,7 @@ class Status extends React.Component {
       return <div>{loadingString}</div>;
     } else {
 
-      if (current) {
+      if (!current) {
 
         const songLink = current.link;
         const songName = current.name;
@@ -85,18 +85,20 @@ class Status extends React.Component {
         );
       } else {
 
-        const notListeningStrings = ["It doesn't look like Evan's listening to anything right now. Maybe later!",
-                                     "Looks like Evan's Spotify isn't playing at the moment. That'll change soon."];
-
+        const notListeningStrings = ["Maybe later!", "That'll change soon.", "We'll see how long that lasts."];
         const notListeningString = notListeningStrings[Math.floor(Math.random()*notListeningStrings.length)];
+
         return (
-          <Container>
-            <Row>
-              <Col>
-                <span style={{ marginLeft: '10px' }}>{ notListeningString }</span>
-              </Col>
-            </Row>
-          </Container>
+          <div class='card' style={{ width: '500px' }}>
+            <div class='row no-gutters'>
+              <div class='col-sm-7'>
+                <div class='card-body'>
+                  <h5 class='card-title'>Evan's not listening to anything right now.</h5>
+                  <p class='card-text'>{ notListeningString }</p>
+                </div>
+              </div>
+            </div>
+          </div>
         );
       }
     }
