@@ -43,7 +43,10 @@ class Status extends React.Component {
     if (error) {
       return <div>Hmm, something went wrong: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Asking the magic conch...</div>;
+      const loadingStrings = ["Asking the magic conch...", "Wingardiuming some leviosas..."];
+      const loadingString = loadingStrings[Math.floor(Math.random()*loadingStrings.length)];
+
+      return <div>{loadingString}</div>;
     } else {
 
       if (current) {
@@ -62,23 +65,28 @@ class Status extends React.Component {
             artistNames.push(' and ');
           }
         }
-        const ListeningStrings = ["Join in!", "Typical.", "Maybe you should fix him.", "Wanna listen?"];
-        const notListeningString = ListeningStrings[Math.floor(Math.random()*ListeningStrings.length)];
+        const listeningStrings = ["Join in!", "Typical.", "Maybe you should fix him.", "Wanna listen?"];
+        const listeningString = listeningStrings[Math.floor(Math.random()*listeningStrings.length)];
 
         return (
-          <Container>
-            <Row>
-              <Col>
-                <Image variant="top" src={songImageLink} width={ 100 }/>
-                <span style={{ marginLeft: '10px' }}>Evan's listening to <a href={ songLink }>{ songName }</a> by { artistNames } right now. { notListeningString }</span>
-              </Col>
-            </Row>
-          </Container>
+          <div class='card' style={{ width: '500px' }}>
+            <div class='row no-gutters'>
+              <div class='col-sm-5'>
+                <img class='card-img' src={songImageLink} />
+              </div>
+              <div class='col-sm-7'>
+                <div class='card-body'>
+                  <h5 class='card-title'>Evan's listening to <a href={ songLink }>{ songName }</a> by { artistNames }.</h5>
+                  <p class='card-text'>{ listeningString }</p>
+                </div>
+              </div>
+            </div>
+          </div>
         );
       } else {
 
         const notListeningStrings = ["It doesn't look like Evan's listening to anything right now. Maybe later!",
-                                     "Looks like Evan's Spotify isn't playing. That'll change soon."];
+                                     "Looks like Evan's Spotify isn't playing at the moment. That'll change soon."];
 
         const notListeningString = notListeningStrings[Math.floor(Math.random()*notListeningStrings.length)];
         return (
