@@ -107,8 +107,11 @@ def get_current_playing_string() -> str:
 def update_current_playing():
     global current_playing
     while True:
-        current_playing = ss.get_current_playing()
-        time.sleep(5)
+        try:
+            current_playing = ss.get_current_playing()
+        except Exception as e:
+            print(e)
+    time.sleep(5)
 
 if __name__ == '__main__':
     ss = SpotifyStatus()
